@@ -1,27 +1,28 @@
 {
-	"name": "node-crowdin",
-	"version": "0.1.0",
-	"description": "Synchrone with crowdin, your gettext based .PO files.",
-	"scripts": {
-		"check": "./node_modules/david/bin/david.js --registry http://registry.npm.ml.com/"
-	},
-	"author": "Pablo Lucadei",
-	"license": "MIT",
-	"dependencies": {
-		"winston": "0.8.3",
-		"request": "2.51.0",
-		"commander": "2.6.0"
-	},
-	"devDependencies": {
-		"mocha": "2.1.0",
-		"david": "6.1.1"
-	},
-	"bin": "./bin/cli.js",
-	"engines": {
-		"node": ">= 0.10.0"
-	},
-	"repository": {
-    		"type": "git",
-    		"url": "git://github.com/pablonazareno/node-crowdin.git"
-  	}
+  "name": "node-crowdin",
+  "version": "0.1.0-transitional-i18n",
+  "description": "Synchrone with crowdin, your gettext based .PO files.",
+  "scripts": {
+    "check": "./node_modules/david/bin/david.js --registry http://registry.npm.ml.com/"
+  },
+  "author": "Pablo Lucadei",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "0.4.7",
+    "commander": "2.6.0",
+    "request": "2.51.0",
+    "winston": "0.8.3"
+  },
+  "devDependencies": {
+    "mocha": "2.1.0",
+    "david": "6.1.1"
+  },
+  "bin": "./bin/cli.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pablonazareno/node-crowdin.git"
+  }
 }

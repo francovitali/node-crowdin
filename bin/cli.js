@@ -4,35 +4,28 @@
 
 var program = require('commander');
 var scripts = require('./scripts.js');
-program.version('0.0.1');
+program.version('0.0.2');
 
 program
-	.command('download')
-	.description('Download traductions from Crowdin.')
+	.command('gettext')
+	.description('Scan sources code and generate source message file')
 	.action(function() {
-		scripts.downloadCrowdin(console.log);
+		scripts.generateSources(scripts.messagesFilename, console.log);
 	});
 
 program
-	.command('create')
-	.description('Initialize traductions in Crowdin.')
+	.command('download')
+	.description('Download translations from crowdin')
 	.action(function() {
-		scripts.createCrowdin(console.log);
+		scripts.downloadTranslations(console.log);
 	});
 
 program
 	.command('upload')
-	.description('Scan scr code and upload new traductions to Crowdin.')
-	.option('-m, --merge', 'Merge with existing traductions.')
+	.description('Upload translations to crowdin')
+	.option('-f, --force', 'Force upload, removing source messages not present in the current upload')
 	.action(function(option) {
-		scripts.uploadCrowdin(option.merge, console.log);
-	});
-
-program
-	.command('generate')
-	.description('Scan scr code and generate traductions files.')
-	.action(function() {
-		scripts.generateFile(scripts.defaultFileName, console.log);
+		scripts.uploadSources(option.force, console.log);
 	});
 
 program.parse(process.argv);

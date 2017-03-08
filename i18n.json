@@ -1,0 +1,5 @@
+{
+	"app": "my-app-repository-name",
+	"project": "my-crowdin-project-name",
+	"srcPath": "lib"
+}

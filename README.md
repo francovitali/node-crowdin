@@ -1,43 +1,47 @@
-#node-crowdin
+# node-crowdin
 Synchronize with crowdin your gettext based PO files.
+> This is a transitional package to sync with "m10e-service" instead of crowdin
+> To migrate from previous versions replace old "crowdin.json" file with "i18n.json" described here
 
-## IMPORTANT
+# Dependencies
 This module works with [node-translator](https://github.com/pablonazareno/node-translator). So when scaning src file to get translations keys, look for its functions names.
 
-##Instalation
-npm install -g node-crowding
+## Instalation
+npm install node-crowdin@0.1.0-transitional-i18n --save
 
-##Configuration
-Place a file named **crowding.json** in the root of your project with this information:
+## Configuration
+Place a file named **i18n.json** in the root of your project with this information:
 ```javascript
 {
-	"projectId": "mercadolibre-xxx",
-	"apiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	"srcPath": "classes",
-	"filename": "Messages.po"
+	"app": "my-app-repository-name"
+	"project": "my-translation-project-name",
+	"srcPath": "classes"
 }
 ```
+
+> **name: application repository name** 
+> Used to identify this application (usually the repository name). On force upload, only unused messages from THIS application will be removed
+
+> **project: translation project name** 
+> This is the name used by the Content Management (CM) team to identify the "translation projects" (think of this as a "group" tag). Request this name to CM team
+
+> Note: is ok if different "applications" (repositories), share the same "project"
 
 If you are using **Mac**, make sure you already have gettext available in your OS. If not, install it:
 
 ```bash
 brew install gettext
+brew link gettext --force
 ```
-Then add it to the PATH env variable:
 
-```bash
-export GETTEXT_HOME=/usr/local/opt/gettext/
-export PATH=$GETTEXT_HOME/bin:$PATH
-```
-##Usage
-###node-crowding create
-- Scan src path for translations and create a new project file in crowding with one finded. 
+## Usage
 
-###node-crowding download
-- Download from crowding translation files, into **i18n** directiry.
+### node-crowdin gettext
+- Localy scan src path for source messages and generate keys file.
 
-###node-crowding upload [--merge]
-- Scan src path for translation. if merge options is present download translations from crowding and merge both, and upload to crowding.
+### node-crowdin upload [--force]
+- Upload messages sources to translation service
+> Warning: DO NOT USE force option! Otherwise all sources not present in the current upload will be removed from crowdin !!!
 
-###node-crowding generate
-- Localy scan src path for translations and generate keys file.
+### node-crowdin download
+- Download translations from translation service, into **i18n** directory.
