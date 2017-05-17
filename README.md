@@ -3,7 +3,7 @@ Synchronize with crowdin your gettext based PO files.
 > This is a transitional package to sync with "m10e-service" instead of crowdin
 > To migrate from previous versions replace old "crowdin.json" file with "i18n.json" described here
 
-# Dependencies
+## Dependencies
 This module works with [node-translator](https://github.com/pablonazareno/node-translator). So when scaning src file to get translations keys, look for its functions names.
 
 ## Instalation
@@ -45,3 +45,17 @@ brew link gettext --force
 
 ### node-crowdin download
 - Download translations from translation service, into **i18n** directory.
+
+## Migrate from previous versions
+
+1) Update package to "node-crowdin:0.1.0-transitional-i18n"
+2) Remove file "crowdin.json"
+3) Add file "i18n.json" as:
+
+```javascript
+{
+    "app": "github repository name",
+    "project": "request new Babel project name to CM, sending the old Crowdin projectid",
+    "srcPath": "same as crowdin.json"
+}
+```
